@@ -1,36 +1,24 @@
 {
   "todos": [
     {
-      "id": 0,
-      "name": "Narmatha"
-    },
-    {
       "id": 1,
-      "name": "Saravana"
+      "name": "saravana@gmail.com",
+      "pass": "mani"
     },
     {
-      "id": 2,
-      "name": "Mani"
+      "name": "Dhanush@gmail.com",
+      "pass": "karthick",
+      "id": 2
     },
     {
-      "name": "Megala",
+      "name": "Narmatha@gmail.com",
+      "pass": "mani",
       "id": 3
     },
     {
-      "name": "meena",
+      "name": "meena@gmail.com",
+      "pass": "ssss",
       "id": 4
-    },
-    {
-      "pass": "loosu",
-      "id": 5
-    },
-    {
-      "name": "Shanahika",
-      "id": 6
-    },
-    {
-      "name": "Prakash",
-      "id": 7
     }
   ]
 }
