@@ -8,8 +8,13 @@
             <div class="text-center">
               <h3 class="dark-grey-text mb-5"><strong>Sign in</strong></h3>
             </div>
-            <mdb-input label="Your email" type="text"  v-model="todoName" />
-            <mdb-input label="Your password" type="password" containerClass="mb-0" />
+            <mdb-input label="Your email" type="text"  v-model="todoName" aria-required="true"/>
+            <div v-for="todo of todos"  :key="todo.id" id="hh"> 
+           <div v-if=" (todoName==(todo.name))">
+             <p> Already exist</p>
+           </div>
+            </div>
+            <mdb-input label="Your password" type="password" containerClass="mb-0" v-model="topass" aria-required="true"/>
             
             <div class="text-center mb-3">
              <a href="https://saravanakumark.000webhostapp.com/" ><mdb-btn type="button" gradient="blue" id ="ss" rounded class="btn-block z-depth-1a" v-on:click="addtodo">Sign in</mdb-btn></a>
@@ -42,17 +47,28 @@ import axios from 'axios';
     data(){
         return{
             todos:[],
-            todoName:''
+            todoName:'',
+            topass:''
         } 
 
     },
+    
   methods:{
   async  addtodo(){
-      const res=await axios.post('http://localhost:3000/todos',{name:this.todoName});
-      this.todos=[...this.todos,res.data];
+      const res=await axios.post('http://localhost:3000/todos',{name:this.todoName,pass:this.topass});
+      this.todos=[...this.todos,res.data]; 
       this.todoName='';
+      this.topass='';
     }
-  }
+  },
+   async created()
+    {
+     
+      const res =await axios.get('http://localhost:3000/todos');
+    this.todos=res.data;
+    
+    }
+
   }
 
 </script>
