@@ -11,10 +11,18 @@
           </div>
           <form>
           <mdb-card-body class="mx-4 mt-4">
-            <mdb-input label="Your email" type="text" required/>
-            <mdb-input label="Your password" type="password" containerClass="mb-0"  required/>
-            <div class="text-center mb-4 mt-5">
-             <a href="https://saravanakumark.000webhostapp.com/" ><mdb-btn color="danger" type="button" class="btn-block z-depth-2">Log in</mdb-btn></a>
+            <mdb-input label="Your email" type="text" v-model="toname" required/>
+            <mdb-input label="Your password" type="password" containerClass="mb-0"  v-model="topass" required/>
+            <div class="">
+             <div v-for="todo of todos"  :key="todo.id" id="hh"> 
+           <div v-if="  ((toname==(todo.name))&&(topass==(todo.pass)))">
+              <a href="https://saravanakumark.000webhostapp.com/" > <mdb-btn color="danger" id="bt">Log in</mdb-btn></a>
+           </div>
+           <div v-else>
+             
+   
+           </div>
+        </div>
             </div>
            
            
@@ -24,33 +32,36 @@
       </mdb-col>
     </mdb-row>
   </section>
-   <ul>
-        <li v-for="todo of todos"  :key="todo.id"> 
-            {{ 'Narmatha'==(todo.name)
-                
-             }}</li>
-            
-    </ul>
+   
+       
+    
     </div>
 </template>
 <script>
+
 import axios from 'axios';
-  import { mdbRow, mdbCol, mdbCard, mdbCardBody, mdbInput, mdbBtn } from 'mdbvue';
+  import { mdbRow, mdbCol, mdbCard, mdbCardBody, mdbInput,mdbBtn} from 'mdbvue';
   export default {
     name: 'FormsPage',
+    name1: 'ButtonPage',
+     name2: 'AlertPage',
     components: {
       mdbRow,
       mdbCol,
       mdbCard,
       mdbCardBody,
       mdbInput,
-      mdbBtn,
+       mdbBtn,
+       
+      
       
     },
     data(){
         return{
             todos:[],
-            
+            toname:'',
+            topass:'',
+           
         } 
     },
      async created()
@@ -60,7 +71,10 @@ import axios from 'axios';
     this.todos=res.data;
     
     },
-  }
+
+}
+   
+  
 </script>
 <style>
   .form-simple .font-small {
@@ -89,4 +103,9 @@ import axios from 'axios';
       margin-left: 13cm;
      
     }
+    #bt
+    {
+      width: 6.5cm;
+    }
 </style>
+
